@@ -13,3 +13,6 @@
   Cache-Control: no-cache
 /app.css
   Cache-Control: no-cache
+
+/boxes.js
+  Cache-Control: no-cache

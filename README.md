@@ -68,3 +68,15 @@ Per l'avvio locale basta Node.js 22 o successivo: scarica lo ZIP, estrai, esegui
 Drive può già conservare link a cartelle e associazioni a repo/app senza OAuth. Per leggere automaticamente le modifiche occorre configurare il client ID Google Cloud in Drive → Configura e autorizzare il proprio account. Il solo Client ID non è un segreto; non inserire il client secret. Mostra i primi 30 elementi direttamente in ogni cartella, senza scansione delle sottocartelle. La cache offline dei metadati Drive è facoltativa. Il backup include le cartelle scelte, non token né snapshot dei file Drive.
 
 Dettagli di configurazione, limitazioni e test in [IMPLEMENTATION.md](IMPLEMENTATION.md).
+
+## Versione 1.2 — Dashboard modulare
+
+Nuovo design più compatto, dodici icone SVG coordinate, rimosso il banner decorativo e grafici raccolti in Analisi apribile. Navigazione mobile orizzontale per accedere anche ai box personali.
+
+- Nuovo box: Note modificabili direttamente, Checklist con avanzamento, raccolta Link (una riga `Nome | https://...`), Repo per topic con dati GitHub già sincronizzati, Numeri delle fonti.
+- Organizza: sposta su/giù, mostra/nascondi, larghezza normale/completa; eliminazione con conferma dei box personali. I box di sistema si possono nascondere e ripristinare.
+- Ogni box si può ridurre dalla sua intestazione. Ripristina disposizione riporta tutti i box visibili senza cancellare quelli personali.
+- Box e disposizione vengono salvati nel browser e nel backup JSON versione 2. Fino a 60 box personali; nessun contenuto HTML eseguibile o codice arbitrario nei box.
+- Le raccolte repo sono dinamiche e richiedono gli stessi dati pubblici GitHub della dashboard. Note, checklist e link funzionano offline; i numeri riflettono gli ultimi dati disponibili.
+
+Test: cinque tipi di box, progressione checklist, URL non validi, riordino/disposizione, riduzione, visibilità, ripristino, importazioni e regressione delle funzioni precedenti. Il service worker include modulo box e nuove icone nel pacchetto offline.
