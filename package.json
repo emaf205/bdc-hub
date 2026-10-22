@@ -1,8 +1,15 @@
 {
   "name": "bdc-hub",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "scripts": {"deploy": "wrangler deploy", "dev": "wrangler dev", "check": "node --check worker.mjs"},
-  "devDependencies": {"wrangler": "^4.0.0"}
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "check": "node --check worker.mjs",
+    "start": "node local-server.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
 }

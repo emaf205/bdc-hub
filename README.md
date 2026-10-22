@@ -1,6 +1,6 @@
 # BDC HUB
 
-Dashboard di Emanuele BDC: App, GitHub, Articoli e Link utili. Nessun database o token necessario. Mostra esclusivamente dati pubblici.
+Dashboard di Emanuele BDC: App, GitHub, Articoli, Link e Google Drive opzionale. PWA installabile con dati offline. Le fonti pubbliche non richiedono token; Drive usa autorizzazione Google nel browser e non invia dati privati al server.
 
 ## Pubblicare su Cloudflare
 
@@ -58,3 +58,13 @@ Nuovo stile bianco e nero ispirato alla reference; sette asset SVG separati in p
 Quattro grafici a barre con selettore e export CSV/SVG: linguaggio principale per repo, topic (una repo può avere più topic), repo per settimana dell’ultimo push nelle ultime 8 settimane UTC (non numero di commit), articoli del feed per mese negli ultimi 6 mesi UTC (feed potenzialmente parziale). I grafici usano tutti i dati disponibili della fonte, indipendentemente dai filtri delle liste. Data della fonte sempre visibile. Valori numerici leggibili anche senza le barre.
 
 Verificati quattro grafici, conteggi, export SVG valido, ricerca, preferiti, link personali, fallback GitHub e pacchetto Wrangler con asset statici.
+
+## Versione 1.1: PWA, locale e Drive
+
+Apri la dashboard HTTPS e usa Installa (oppure il menu del browser). Dopo il primo caricamento la shell è disponibile offline; i dati già sincronizzati vengono conservati sul dispositivo. Nuove sincronizzazioni e documenti online richiedono Internet. Nuove versioni vengono applicate dal pulsante dedicato.
+
+Per l'avvio locale basta Node.js 22 o successivo: scarica lo ZIP, estrai, esegui `npm start` dalla cartella e apri `http://localhost:8787`. L'avvio locale non richiede npm install, Wrangler o un account Cloudflare. I dati salvati appartengono all'origine: localhost e sito HTTPS hanno archivi distinti; trasferiscili con il backup JSON.
+
+Drive può già conservare link a cartelle e associazioni a repo/app senza OAuth. Per leggere automaticamente le modifiche occorre configurare il client ID Google Cloud in Drive → Configura e autorizzare il proprio account. Il solo Client ID non è un segreto; non inserire il client secret. Mostra i primi 30 elementi direttamente in ogni cartella, senza scansione delle sottocartelle. La cache offline dei metadati Drive è facoltativa. Il backup include le cartelle scelte, non token né snapshot dei file Drive.
+
+Dettagli di configurazione, limitazioni e test in [IMPLEMENTATION.md](IMPLEMENTATION.md).
