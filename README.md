@@ -1,6 +1,6 @@
 # BDC HUB
 
-Dashboard minimale di Emanuele BDC: App, GitHub, Articoli. Nessun database o token necessario. Mostra esclusivamente dati pubblici.
+Dashboard di Emanuele BDC: App, GitHub, Articoli e Link utili. Nessun database o token necessario. Mostra esclusivamente dati pubblici.
 
 ## Pubblicare su Cloudflare
 
@@ -26,3 +26,19 @@ La dashboard è pubblica se pubblicata su workers.dev. Non inserire segreti nei 
 ## Sviluppo
 
 Node.js 22 o successivo, `npm install`, `npm run dev`. `npm run check` verifica la sintassi. `npm run deploy` pubblica usando un account Cloudflare autenticato.
+
+## Dashboard V2
+
+- Layout responsive con navigazione laterale, quattro pannelli e conteggi delle fonti.
+- Ricerca globale in nomi, descrizioni, topic, URL e categorie.
+- GitHub: filtri per topic e senza tag, ordinamento per data o nome, linguaggio e topic cliccabili.
+- Stato della sincronizzazione e ora per ogni fonte; avvisi parziali e di errore visibili.
+- Link utili raggruppati: Gestione, I miei spazi, Strumenti e Documentazione. I link predefiniti sono scorciatoie pubbliche, non attestano account collegati. Publii è un programma desktop: il relativo link apre la documentazione, non un pannello di amministrazione web.
+- Aggiunta ed eliminazione con conferma dei link personali; i link predefiniti restano disponibili.
+- Preferiti trasversali con filtro dedicato.
+- Esportazione JSON di link personali, preferiti e snapshot delle fonti. Importazione JSON che unisce link e preferiti, validando gli indirizzi HTTP/HTTPS, senza importare le fonti remote.
+- Link personali e preferiti usano localStorage: restano nel browser/dispositivo e non vengono inviati al server o salvati su GitHub. In navigazione privata possono andare persi. Il backup permette di trasferirli. La dashboard non sincronizza preferenze tra dispositivi.
+
+## Verifiche V2
+
+Sintassi del Worker e JavaScript della pagina; pacchetto Wrangler con deploy dry-run; test DOM su caricamento, ricerca globale, topic, preferiti, aggiunta ed eliminazione link, escaping dei testi e conservazione dei dati precedenti in caso di errore. Controllo visivo in un browser reale e deploy sull'account Cloudflare non eseguiti in questa sessione.
