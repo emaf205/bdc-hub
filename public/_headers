@@ -16,3 +16,6 @@
 
 /boxes.js
   Cache-Control: no-cache
+
+/navigation.js
+  Cache-Control: no-cache

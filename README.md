@@ -80,3 +80,9 @@ Nuovo design più compatto, dodici icone SVG coordinate, rimosso il banner decor
 - Le raccolte repo sono dinamiche e richiedono gli stessi dati pubblici GitHub della dashboard. Note, checklist e link funzionano offline; i numeri riflettono gli ultimi dati disponibili.
 
 Test: cinque tipi di box, progressione checklist, URL non validi, riordino/disposizione, riduzione, visibilità, ripristino, importazioni e regressione delle funzioni precedenti. Il service worker include modulo box e nuove icone nel pacchetto offline.
+
+## Navigazione semplificata
+
+Schermata principale con tre sezioni App, GitHub, Articoli e menu Altro. Una sola sezione visibile su tutti i dispositivi, con ricerca e accesso alla fonte. Rimossi barra laterale e riepiloghi numerici dalla vista principale. Drive, Link e box personali si aprono da Altro; nello stesso menu sono disponibili creazione box, disposizione, installazione, backup e grafici. I dati e le personalizzazioni precedenti rimangono conservati. Le nuove versioni della PWA vengono applicate con Nuova versione.
+
+Verificati passaggio fra sezioni, menu Altro, navigazione Drive, creazione box e funzioni preesistenti; pacchetto Wrangler con modulo di navigazione incluso nel precache offline.
