@@ -2,8 +2,11 @@
   "name": "bdc-hub",
   "main": "worker.mjs",
   "compatibility_date": "2026-10-22",
+  "workers_dev": true,
   "compatibility_flags": [
     "global_fetch_strictly_public"
   ],
-  "workers_dev": true
+  "assets": {
+    "directory": "./public"
+  }
 }

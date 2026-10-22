@@ -50,3 +50,11 @@ Su schermi fino a 700 px, navigazione inferiore fissa tra App, GitHub, Articoli 
 La Cache API del Worker riutilizza le fonti per 10 minuti e conserva una copia fino a 24 ore per rispondere agli errori upstream. La cache è locale al data center e non garantita. Se la chiamata server a GitHub fallisce, il browser prova direttamente l'API pubblica, con i limiti associati alla propria connessione. Le ultime risposte valide vengono salvate anche in localStorage e mostrate con avviso in caso di indisponibilità. Nessun token necessario: restano possibili limiti GitHub su entrambe le connessioni. La CSP consente la sola API GitHub come destinazione esterna delle richieste del browser.
 
 Verificati anche navigazione tra pannelli e recupero da un 403 simulato; controllo visivo su telefono reale non eseguito.
+
+## Design e grafici
+
+Nuovo stile bianco e nero ispirato alla reference; sette asset SVG separati in public/assets (cinque icone, occhio astratto, circuito decorativo). Nessuna immagine raster generata. Asset statici serviti da Wrangler tramite public.
+
+Quattro grafici a barre con selettore e export CSV/SVG: linguaggio principale per repo, topic (una repo può avere più topic), repo per settimana dell’ultimo push nelle ultime 8 settimane UTC (non numero di commit), articoli del feed per mese negli ultimi 6 mesi UTC (feed potenzialmente parziale). I grafici usano tutti i dati disponibili della fonte, indipendentemente dai filtri delle liste. Data della fonte sempre visibile. Valori numerici leggibili anche senza le barre.
+
+Verificati quattro grafici, conteggi, export SVG valido, ricerca, preferiti, link personali, fallback GitHub e pacchetto Wrangler con asset statici.
