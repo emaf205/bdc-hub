@@ -42,3 +42,11 @@ Node.js 22 o successivo, `npm install`, `npm run dev`. `npm run check` verifica 
 ## Verifiche V2
 
 Sintassi del Worker e JavaScript della pagina; pacchetto Wrangler con deploy dry-run; test DOM su caricamento, ricerca globale, topic, preferiti, aggiunta ed eliminazione link, escaping dei testi e conservazione dei dati precedenti in caso di errore. Controllo visivo in un browser reale e deploy sull'account Cloudflare non eseguiti in questa sessione.
+
+## Mobile first e continuità dei dati
+
+Su schermi fino a 700 px, navigazione inferiore fissa tra App, GitHub, Articoli e Link; un solo pannello visibile e scorrimento della pagina senza liste annidate. Supporto safe area, controlli touch e caratteri da 16 px nei campi per evitare lo zoom automatico. Su desktop restano visibili tutti i pannelli.
+
+La Cache API del Worker riutilizza le fonti per 10 minuti e conserva una copia fino a 24 ore per rispondere agli errori upstream. La cache è locale al data center e non garantita. Se la chiamata server a GitHub fallisce, il browser prova direttamente l'API pubblica, con i limiti associati alla propria connessione. Le ultime risposte valide vengono salvate anche in localStorage e mostrate con avviso in caso di indisponibilità. Nessun token necessario: restano possibili limiti GitHub su entrambe le connessioni. La CSP consente la sola API GitHub come destinazione esterna delle richieste del browser.
+
+Verificati anche navigazione tra pannelli e recupero da un 403 simulato; controllo visivo su telefono reale non eseguito.
