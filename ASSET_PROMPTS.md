@@ -5,3 +5,7 @@ brand-mark.png → One production brand mark for BDC HUB, Milan identity. Black 
 hero-primary.webp → One wide standalone editorial engraving for a Milan dashboard. Use supplied reference as visual DNA: warm ivory paper, dense black woodcut lines, golden ground and sunrise. Duomo spires, Torre Velasca, small yellow tram on converging rails. Crop-safe panorama, no words/UI/frame/sheet, composition quiet on left and skyline on right.
 
 icon-folder.png → One transparent UI folder icon. Solid black #171710 geometric silhouette with clear tab and one yellow #FFD428 index line. Italian editorial graphic design, bold and readable at 24px, no texture, text, scenery, shadow, tile or container. Square canvas, even padding. One separate asset.
+
+background-milano.webp → One wide independent Milan skyline woodcut, ivory negative space, black architectural linework, large yellow sun, Duomo and Torre Velasca, 3:1, no words/UI/frame.
+
+artwork-tram.webp → One wide independent Milan vintage yellow tram woodcut under Galleria arches, black/ivory/yellow, 3:1, crop-safe section band, no words/numbers/UI/frame.

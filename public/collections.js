@@ -12,16 +12,16 @@ export function validateCollections(raw){
   return {id:f.id,name:f.name.trim(),items};
  });
 }
-export function createCollections({getItems,getQuery,showMessage}){
+export function createCollections({getItems,getQuery,showMessage,onChange=()=>{}}){
  let folders=[];try{folders=validateCollections(JSON.parse(localStorage.getItem('bdc-collections-v1')||'[]'));}catch{}
  let editing=null,selected=new Map(),openId=null,undo=null,revision=0;
  const key=i=>i.kind+'|'+i.url;
- function persist(){revision++;dbPut('collections',folders);try{localStorage.setItem('bdc-collections-v1',JSON.stringify(folders));}catch{showMessage('Salvataggio cartelle non disponibile. Esporta un backup prima di chiudere.');}}
+ function persist(){revision++;onChange();dbPut('collections',folders);try{localStorage.setItem('bdc-collections-v1',JSON.stringify(folders));}catch{showMessage('Salvataggio cartelle non disponibile. Esporta un backup prima di chiudere.');}}
  function btn(label,fn,cls='button'){const b=el('button',label,cls);b.type='button';b.addEventListener('click',fn);return b;}
  function feedback(message,restore){const root=$('collections-feedback');root.replaceChildren(el('span',message));if(restore)root.append(btn('Annulla',()=>{restore();persist();render();root.replaceChildren(el('span','Operazione annullata.'));}));}
  function remove(fn,message){const snapshot=structuredClone(folders);fn();persist();const at=revision;feedback(message,()=>{if(revision===at)folders=snapshot;else {for(const f of snapshot){const now=folders.find(x=>x.id===f.id);if(!now)folders.push(f);else for(const i of f.items)if(!now.items.some(x=>key(x)===key(i)))now.items.push(i);}}});render();}
  function render(){const root=$('collections-list');root.replaceChildren();const all=new Map(getItems().map(i=>[key(i),i]));const q=getQuery().trim().toLocaleLowerCase();
-  if(!folders.length){const empty=el('div','','empty');empty.append(el('p','Un progetto, tutte le sue risorse.'),btn('Crea la prima cartella',()=>open()));root.append(empty);return;}
+  if(!folders.length){const empty=el('div','','empty');const art=document.createElement('img');art.src='/assets/icon-folder.png';art.alt='';art.width=120;art.height=120;art.className='empty-art';empty.append(art);empty.append(el('p','Un progetto, tutte le sue risorse.'),btn('Crea la prima cartella',()=>open()));root.append(empty);return;}
   let shown=0;for(const f of folders){const nameMatch=f.name.toLocaleLowerCase().includes(q);const items=f.items.map(i=>({...i,...all.get(key(i))}));const visible=items.filter(i=>!q||nameMatch||(i.name+' '+i.url+' '+labels[i.kind]).toLocaleLowerCase().includes(q));if(q&&!nameMatch&&!visible.length)continue;shown++;
    const card=el('article','','collection-card');const head=el('div','','collection-head');const toggle=btn(f.name+' · '+items.length,()=>{openId=openId===f.id?null:f.id;render();},'collection-toggle');toggle.setAttribute('aria-expanded',String(openId===f.id||!!q));const bodyId=f.id+'-contents';toggle.setAttribute('aria-controls',bodyId);head.append(toggle,btn('Modifica',()=>open(f),'quiet-button'),btn('Elimina',()=>remove(()=>{folders=folders.filter(x=>x.id!==f.id);},'Cartella rimossa. Gli elementi originali sono conservati.'),'quiet-button'));card.append(head);
    const body=el('div','','collection-content');body.id=bodyId;body.hidden=openId!==f.id&&!q;

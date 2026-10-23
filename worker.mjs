@@ -15,7 +15,7 @@ export async function getData(kind) {
     for (let page = 1; page <= 100; page++) {
       const batch = await (await request(`https://api.github.com/users/emaf205/repos?per_page=100&type=owner&sort=pushed&page=${page}`)).json();
       if (!Array.isArray(batch)) throw new Error('Risposta GitHub non valida');
-      items.push(...batch.map(r => ({name:r.name, description:r.description || '', url:safeURL(r.html_url), date:r.pushed_at, topics:r.topics || [], language:r.language || ''})));
+      items.push(...batch.map(r => ({name:r.name, description:r.description || '', url:safeURL(r.html_url), date:r.pushed_at, topics:r.topics || [], language:r.language || '',stars:r.stargazers_count,forks:r.forks_count,openIssues:r.open_issues_count,archived:r.archived===true,isFork:r.fork===true,homepage:r.homepage||'',license:r.license?.spdx_id||'',createdAt:r.created_at,sizeKB:r.size,defaultBranch:r.default_branch})));
       if (batch.length < 100) return {items};
     }
     return {items, notice:'Limite di lettura raggiunto: elenco parziale.'};
@@ -46,7 +46,7 @@ export default {async fetch(request, env, ctx) {
     const kind=path.slice(5);
     if(!['apps','repos','articles'].includes(kind))return new Response('Not found',{status:404});
     const cache = typeof caches !== 'undefined' ? caches.default : null;
-    const cacheKey = new Request(new URL('/__data_cache/v1/'+kind, request.url).href);
+    const cacheKey = new Request(new URL('/__data_cache/v2/'+kind, request.url).href);
     let previous;
     try { const cached=cache && await cache.match(cacheKey); if(cached)previous=await cached.json(); } catch {}
     if(previous && Date.now()-Date.parse(previous.fetchedAt)<600000)return Response.json(previous,{headers:{'Cache-Control':'public, max-age=120'}});

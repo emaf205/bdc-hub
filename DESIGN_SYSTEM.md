@@ -43,3 +43,15 @@ Prompts are saved in ASSET_PROMPTS.md.
 
 ## Validation
 Automated DOM tests: mixed folder creation/rename, selection retained during picker filtering, removal/undo, local persistence, export, import merge, invalid URL rejection; search reset, topic input, list expansion, title entity decoding. Existing box and simulated Drive regressions run separately. Cloudflare dry-run before commit. Real OAuth and physical phone installation are not covered by automated tests.
+
+## XXXXXXL visual scale
+Approved continuation: 64–112px desktop display title; 44–76px mobile title, 68–94px KPI numbers, 29–34px panel titles, 21–22px item titles, 38–44px section icons. Search remains first. Larger main artwork, separate architecture and tram illustrations used as section bands; never text baked into images. 2-column KPI layout at <=1200px. Primary controls >=48px mobile. Existing monochrome UI icons retained and enlarged. All text remains on flat surfaces.
+
+background-milano.webp → standalone skyline image for section bands and sidebar background
+artwork-tram.webp → standalone tram illustration for section bands
+
+## Statistics cockpit
+Home prioritizes 4 inventory totals, 6 factual public metrics, data-derived bold observations, language and last-push charts, 6-month publication chart and repository metadata coverage. Issue count explicitly includes pull requests. Missing fields render as unavailable, not zero. GitHub cache schema v2. No traffic, user counts, deploy health or growth estimates are invented. Public snapshots and local collection counts are identified.
+
+## Icon actions
+Compact actions use existing separate monochrome SVG assets or simple typographic symbols. Hover and keyboard focus reveal explanatory tooltips. Accessible action names remain intact. Primary mobile actions keep text because touch has no hover.
