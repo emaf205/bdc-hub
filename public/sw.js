@@ -1,5 +1,5 @@
-const VERSION='bdc-shell-v5-20261023-simple';
-const SHELL=['/','/app.js','/app.css','/drive.js','/pwa.js','/storage.js','/boxes.js','/navigation.js','/assets/mark.svg','/assets/plus.svg','/assets/settings.svg','/assets/checklist.svg','/assets/note.svg','/assets/metrics.svg','/assets/drive.svg','/manifest.webmanifest','/assets/apps.svg','/assets/repos.svg','/assets/articles.svg','/assets/links.svg','/assets/chart.svg','/assets/circuit-grid.svg','/assets/neural-eye.svg','/assets/icon-192.png','/assets/icon-512.png','/assets/icon-maskable.svg'];
+const VERSION='bdc-shell-v6-20261023-dashboard';
+const SHELL=['/','/app.js','/app.css','/drive.js','/pwa.js','/storage.js','/boxes.js','/insights.js','/assets/mark.svg','/assets/plus.svg','/assets/settings.svg','/assets/checklist.svg','/assets/note.svg','/assets/metrics.svg','/assets/drive.svg','/manifest.webmanifest','/assets/apps.svg','/assets/repos.svg','/assets/articles.svg','/assets/links.svg','/assets/chart.svg','/assets/circuit-grid.svg','/assets/neural-eye.svg','/assets/icon-192.png','/assets/icon-512.png','/assets/icon-maskable.svg'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(VERSION).then(cache=>cache.addAll(SHELL))));
 self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('bdc-shell-')&&key!==VERSION)await caches.delete(key);await self.clients.claim();})()));
 self.addEventListener('message',e=>{if(e.data?.type==='SKIP_WAITING')self.skipWaiting();});

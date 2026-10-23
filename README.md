@@ -81,8 +81,12 @@ Nuovo design più compatto, dodici icone SVG coordinate, rimosso il banner decor
 
 Test: cinque tipi di box, progressione checklist, URL non validi, riordino/disposizione, riduzione, visibilità, ripristino, importazioni e regressione delle funzioni precedenti. Il service worker include modulo box e nuove icone nel pacchetto offline.
 
-## Navigazione semplificata
+## Dashboard completa: grafici, date e statistiche
 
-Schermata principale con tre sezioni App, GitHub, Articoli e menu Altro. Una sola sezione visibile su tutti i dispositivi, con ricerca e accesso alla fonte. Rimossi barra laterale e riepiloghi numerici dalla vista principale. Drive, Link e box personali si aprono da Altro; nello stesso menu sono disponibili creazione box, disposizione, installazione, backup e grafici. I dati e le personalizzazioni precedenti rimangono conservati. Le nuove versioni della PWA vengono applicate con Nuova versione.
+Ripristinato il layout a blocchi, con barra laterale su desktop e collegamenti alle sezioni su mobile. App, GitHub, Articoli, Link, Drive e box personali sono visibili insieme; nulla è spostato in un menu Altro.
 
-Verificati passaggio fra sezioni, menu Altro, navigazione Drive, creazione box e funzioni preesistenti; pacchetto Wrangler con modulo di navigazione incluso nel precache offline.
+In primo piano: quattro schede statistiche con data della fonte, data odierna Europe/Rome, grafico delle distribuzioni selezionabile e istogramma delle repo per settimana dell'ultimo push. Riepiloghi delle repo aggiornate negli ultimi sette giorni, ultimo push e data dell'ultimo articolo. I valori provengono dalle fonti disponibili: non indicano percentuali di avanzamento né numero di commit. Il feed può essere parziale.
+
+Su mobile i grafici si scorrono orizzontalmente e i blocchi sono in colonna. Filtri GitHub conservati, topic ripetuti rimossi dalle righe per alleggerire le liste. Tutte le funzioni di box personali, PWA, backup e Drive restano disponibili.
+
+Test: grafici e riepiloghi, date delle fonti, funzionalità precedenti, box personali, Drive simulato e bundle Cloudflare. L'aggiornamento PWA si applica da Nuova versione.
